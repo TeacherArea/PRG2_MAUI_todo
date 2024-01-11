@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRG_MAUI_todo_app.MainPage">
+
+    <Grid ColumnDefinitions=".75*, .25*"
+          RowDefinitions="100, auto, auto, *, 100"
+          Padding="10"
+          ColumnSpacing="10"
+          RowSpacing="10">
+
+        <Image Source="todo_logo_transparent.png" 
+               Grid.ColumnSpan="2"
+               BackgroundColor="AliceBlue"/>
+
+        <Label x:Name="Message"
+               Text="To do ToDo"
+               Grid.Row="1" 
+               FontSize="24"
+               HorizontalTextAlignment="Center" 
+               Padding="20"
+               Grid.ColumnSpan="2"/>
+
+        <Entry x:Name="AddListItem" Placeholder="Remember this ..."
+               Grid.Row="2"/>
+
+        <Button Text="Add"
+                Grid.Row="2"
+                Grid.Column="1"
+                Clicked="OnAddClicked"/>
+
+        <CollectionView Grid.Row="3"
+                        Grid.ColumnSpan="2" ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Execute">
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="red"
+                                           Invoked="OnDeleteSwipeItemInvoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0.5">
+                            <Frame>
+                                <Label Text="{Binding .}" />
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
