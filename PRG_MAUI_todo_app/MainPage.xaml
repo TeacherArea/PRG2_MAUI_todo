@@ -43,7 +43,7 @@
                         </SwipeView.RightItems>
                         <Grid Padding="0.5">
                             <Frame>
-                                <Label Text="{Binding .}" />
+                                <Label Text="{Binding Title }" />
                             </Frame>
                         </Grid>
                     </SwipeView>

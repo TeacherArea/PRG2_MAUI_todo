@@ -4,40 +4,45 @@ namespace PRG_MAUI_todo_app
 {
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
+        public ObservableCollection<TodoItems> Items { get; set; }
 
         public MainPage()
         {
             InitializeComponent();
 
-            Items = new ObservableCollection<string>();
+            var storageManager = new StorageManager();
+            var savedItems = storageManager.LoadTodoItems();
+            Items = new ObservableCollection<TodoItems>(savedItems);
             this.BindingContext = this;
         }
+
 
         private void OnAddClicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(AddListItem.Text))
             {
-                Items.Add(AddListItem.Text);
+                var newItem = new TodoItems(AddListItem.Text, DateTime.Now, false);
+                Items.Add(newItem);
                 AddListItem.Text = string.Empty; // Rensa Entry efter tillägg
+
+                var storageManager = new StorageManager(); // Spara till fil
+                storageManager.SaveTodoItems(Items.ToList());
             }
         }
 
         private async void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
         {
-            var swipeItem = sender as SwipeItem;
-            var item = (string)swipeItem.BindingContext;
+            var swipeItem = (SwipeItem)sender;
+            var item = (TodoItems)swipeItem.BindingContext;
 
-            if (Items.Contains(item))
+            bool answer = await DisplayAlert("Confirm Delete", $"Are you sure you want to delete '{item.Title}'?", "Yes", "No");
+            if (answer)
             {
-                bool answer = await DisplayAlert("Confirm Delete", $"Are you sure you want to delete '{item}'?", "Yes", "No");
-                if (answer)
-                {
-                    Items.Remove(item);
-                }
+                Items.Remove(item);
+
+                var storageManager = new StorageManager(); // Spara ändringarna till fil
+                storageManager.SaveTodoItems(Items.ToList());
             }
         }
     }
 }
-
-
