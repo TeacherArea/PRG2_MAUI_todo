@@ -19,11 +19,11 @@ namespace PRG_MAUI_todo_app
             if (!string.IsNullOrWhiteSpace(AddListItem.Text))
             {
                 Items.Add(AddListItem.Text);
-                AddListItem.Text = string.Empty; // Rensa Entry efter tillägg
+                AddListItem.Text = string.Empty;
             }
         }
 
-        private async void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
+        private async void DeleteOnSwipe(object sender, EventArgs e)
         {
             var swipeItem = sender as SwipeItem;
             var item = (string)swipeItem.BindingContext;
