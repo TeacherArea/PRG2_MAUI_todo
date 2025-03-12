@@ -1,7 +1,7 @@
 # MAUI TODO App
 
 ## Beskrivning
-Det här projektet är en TODO-app utvecklad med MAUI (Multi-platform App UI), som syftar till att demonstrera grundläggande MAUI-funktioner samt objektorienterad programmering i C#. Appen låter användare skapa, hantera, och även spara sina att-göra-listor i JSON-format. Projektet är av pedagoiskt art där nivån bedöms vara *Programmering 2* för gymnasiet.
+Det här projektet är en TODO-app utvecklad med MAUI (Multi-platform App UI), som syftar till att demonstrera grundläggande MAUI-funktioner samt objektorienterad programmering i C#. Appen låter användare skapa, hantera, och även spara sina att-göra-listor i JSON-format. Projektet är av pedagoiskt art där nivån bedöms vara *Programmering 1* för gymnasiet. I en av brancherna finns en enkel julvariant.
 
 ## Funktioner
 - Skapar nya TODO-uppgifter
