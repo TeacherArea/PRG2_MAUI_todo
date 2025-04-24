@@ -3,7 +3,7 @@
     x:Class="PRG_MAUI_todo_app.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:PRG_MAUI_todo_app"
+    xmlns:local="clr-namespace:PRG_MAUI_todo_app.View"
     Shell.FlyoutBehavior="Disabled"
     BackgroundColor="Red">
 
@@ -16,8 +16,7 @@
                VerticalOptions="Center" />
     </Shell.TitleView>
 
-    <ShellContent
-        Title="Merry Christmas!"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="Listan" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+
+    <ShellContent Title="Beskrivning" Route="TodoDetailPage" ContentTemplate="{DataTemplate local:TodoDetailPage}" />
 </Shell>
