@@ -1,4 +1,5 @@
-﻿using PRG_MAUI_todo_app.Model;
+﻿using Microsoft.Maui.Controls;
+using PRG_MAUI_todo_app.Model;
 using System.Collections.ObjectModel;
 
 namespace PRG_MAUI_todo_app.View
@@ -47,7 +48,6 @@ namespace PRG_MAUI_todo_app.View
                 await Shell.Current.GoToAsync($"///TodoDetailPage?title={selectedItem.Title}&description={selectedItem.Description}");
             }
         }
-
     }
 }
 

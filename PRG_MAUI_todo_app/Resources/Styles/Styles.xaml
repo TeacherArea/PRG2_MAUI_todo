@@ -86,6 +86,13 @@
         </Setter>
     </Style>
 
+    <Style x:Key="FrameOn" TargetType="Border">
+        <Setter Property="Stroke" Value="Red"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="Padding" Value="2"/>
+    </Style>
+
+
     <Style TargetType="Editor">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />

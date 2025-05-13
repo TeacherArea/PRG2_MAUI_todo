@@ -1,14 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:debug="clr-namespace:PRG_MAUI_todo_app.Debugging;assembly=PRG_MAUI_todo_app"
              x:Class="PRG_MAUI_todo_app.View.MainPage"
              BackgroundImageSource="todo_background.jpg">
 
-    <Grid ColumnDefinitions=".75*, .25*"
-          RowDefinitions="350, auto, auto, *, 100"
-          Padding="10"
-          ColumnSpacing="10"
-          RowSpacing="10">
+    <Grid 
+        RowDefinitions="150,50,auto,*"
+        ColumnDefinitions=".75*,.25*"
+        Margin="8"
+        ColumnSpacing="5"
+        RowSpacing="5">
+
+        <Image Source="todo_logo_transparent.png"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               />
 
         <Label 
                x:Name="Message"
@@ -18,11 +25,7 @@
                FontAttributes="Bold"
                TextColor="White"
                HorizontalTextAlignment="Center" 
-               Padding="20"
                Grid.ColumnSpan="2"/>
-
-        <Image Source="todo_logo_transparent.png"
-               />
 
         <Entry x:Name="AddListItem"
                Placeholder="Läggt till en uppgift ..."
@@ -33,13 +36,19 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 Clicked="OnAddClicked"
-                BackgroundColor="Red"/>
+                />
 
         <CollectionView Grid.Row="3"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                         ItemsSource="{Binding ToDoItemsList}"
                         SelectionMode="Single"
                         SelectionChanged="OnItemSelected">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="2"
+                    />
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <SwipeView>
@@ -48,30 +57,33 @@
                                 <SwipeItem 
                                     BackgroundColor="Red"
                                     IconImageSource="delete_icon.png"
-                                    Invoked="DeleteOnSwipe" />      
+                                    Invoked="DeleteOnSwipe" 
+                                    />
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        <Grid 
-                            Padding="0.5"
+                        <Grid
                             BackgroundColor="White"
->
+                            HorizontalOptions="Fill">
+
                             <Border 
                                 HeightRequest="50"
-                                StrokeThickness="0"
-                                Stroke="LightGray">
-                                
+                                Stroke="LightGray"
+                                StrokeThickness="1"
+                                BackgroundColor="White"
+                                Padding="10"
+                                HorizontalOptions="Fill" >
+
                                 <Label 
                                     Text="{Binding Title}" 
-                                    HeightRequest="40"
                                     FontSize="14"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="End"
-                                    Padding="0,0,10,0"/>
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"/>
                             </Border>
                         </Grid>
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
     </Grid>
 </ContentPage>
