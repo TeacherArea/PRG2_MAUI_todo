@@ -17,7 +17,7 @@
                Padding="8,8,0,0"/>
     </Shell.TitleView>
 
-    <ShellContent Title="Listan" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
-
-    <ShellContent Title="Beskrivning" Route="TodoDetailPage" ContentTemplate="{DataTemplate local:TodoDetailPage}" />
+    <TabBar>
+        <ShellContent Title="Lista" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+    </TabBar>
 </Shell>

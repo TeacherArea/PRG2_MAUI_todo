@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
-
+﻿
 namespace PRG_MAUI_todo_app.Debugging
 {
     public class DebugGrid : Grid

@@ -28,21 +28,22 @@
                Grid.ColumnSpan="2"/>
 
         <Entry x:Name="AddListItem"
-               Placeholder="Läggt till en uppgift ..."
+               Placeholder="Skriv in en uppgift ..."
                BackgroundColor="White"
                Grid.Row="2"/>
 
-        <Button Text="Add"
+        <Button Text="Lägg till"
                 Grid.Row="2"
                 Grid.Column="1"
-                Clicked="OnAddClicked"
+                Clicked="Button_OnAddClicked"
                 />
 
         <CollectionView Grid.Row="3"
                 Grid.ColumnSpan="3"
-                        ItemsSource="{Binding ToDoItemsList}"
-                        SelectionMode="Single"
-                        SelectionChanged="OnItemSelected">
+                ItemsSource="{Binding ToDoItemsList}"
+                SelectionMode="Single"
+                SelectionChanged="OnItemSelected"
+                x:Name="TheCollectionView">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout
                     Orientation="Vertical"
